@@ -3,6 +3,7 @@ import { Upload, Button, AutoComplete, Space, Affix } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import * as d3 from 'd3';
 import Chart from './Chart';
+import './App.css';
 
 const App = () => {
   const [dataSource, setDataSource] = useState(null);
@@ -47,7 +48,7 @@ const App = () => {
   }, [category])
 
   return (
-    <div>
+    <div className="container">
       <Affix>
         <Space align="center" direction="horizontal" style={{ padding: 8, width: '100%', background: '#fff', boxShadow: '0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d' }}>
           <Upload beforeUpload={(file) => { onFileChange(file); return false }} showUploadList={false}>

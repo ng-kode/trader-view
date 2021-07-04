@@ -41,7 +41,7 @@ const Chart = ({ chart_id, symbol, rsRating }) => {
         <div style={{ display: 'flex', flexDirection: 'row' }}>
             <Resizable
                 style={{ background: "#f0f0f0" }}
-                defaultSize={{ width: '95%', height: 240 }}
+                defaultSize={{ width: '90%', height: 240 }}
                 enable={{ top: false, right: false, bottom: true, left: false, topRight: false, bottomRight: false, bottomLeft: false, topLeft: false }}
             >
                 <div id={chart_id} style={{ height: '100%' }}></div>
