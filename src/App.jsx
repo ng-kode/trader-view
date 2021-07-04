@@ -33,11 +33,13 @@ const App = () => {
     if (!dataSource) {
       return;
     }
-    setOptions(
-      Array.from(new Set(dataSource.map(extractCategory)))
-        .map(value => ({ value, label: `(${countCategoryItems(value)}) ${value}` }))
-    )
-    setCategory(extractCategory(dataSource[0]))
+    const newOptions = Array.from(new Set(dataSource.map(extractCategory)))
+      .map(value => ({ value, label: `(${countCategoryItems(value)}) ${value}` }))
+      .sort((a, b) => countCategoryItems(a.value) - countCategoryItems(b.value))
+      .reverse();
+    console.log('newOptions', newOptions)
+    setOptions(newOptions);
+    setCategory(newOptions[0]['value'])
   }, [dataSource])
 
   useEffect(() => {
@@ -56,7 +58,7 @@ const App = () => {
             onSelect={selected => setCategory(selected)}
             value={searchText}
             style={{ width: 200 }}
-            options={options.sort((a, b) => countCategoryItems(a.value) - countCategoryItems(b.value)).reverse()}
+            options={options}
             placeholder="Search Industry"
             filterOption={(inputValue, option) =>
               option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
